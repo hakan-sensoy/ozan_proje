@@ -22,17 +22,11 @@
   }
 
   function runInitialisers() {
-    if (!window.CKEDITOR) {
-      setTimeout(runInitialisers, 100);
-      return;
-    }
-
     initialiseCKEditor();
     initialiseCKEditorInInlinedForms();
   }
 
-  if (document.readyState != 'loading' && document.body) {
-    document.addEventListener('DOMContentLoaded', initialiseCKEditor);
+  if (document.readyState != 'loading') {
     runInitialisers();
   } else {
     document.addEventListener('DOMContentLoaded', runInitialisers);

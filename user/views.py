@@ -20,7 +20,7 @@ def register(request):
 
         newUser.save()
         login(request,newUser)
-        messages.info(request,"Registration was successfully completed.")
+        messages.info(request,"Başarıyla Kayıt Oldunuz...")
 
         return redirect("index")
     context = {
@@ -44,15 +44,15 @@ def loginUser(request):
         user = authenticate(username = username,password = password)
 
         if user is None:
-            messages.info(request,"Username or password incorrect")
+            messages.info(request,"Kullanıcı Adı veya Parola Hatalı")
             return render(request,"login.html",context)
 
-        messages.success(request,"You have successfully logged in.")
+        messages.success(request,"Başarıyla Giriş Yaptınız")
         login(request,user)
         return redirect("index")
     return render(request,"login.html",context)
 def logoutUser(request):
     logout(request)
-    messages.success(request,"You have successfully logged out")
+    messages.success(request,"Başarıyla Çıkış Yaptınız")
     return redirect("index")
 
